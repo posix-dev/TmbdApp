@@ -14,9 +14,19 @@ android-appcompat = "1.7.0"
 retrofitVersion = "2.9.0"
 retrofitInterceptorVersion = "4.11.0"
 kotlinCoroutinesAndroidV = "1.6.4"
+hiltVersion = "2.51.1"
+hiltNavVersion = "1.2.0"
+voyagerVersion = "1.1.0-beta02"
 
 [libraries]
 kotlinx-coroutines-android = { module="org.jetbrains.kotlinx:kotlinx-coroutines-android",  version.ref = "kotlinCoroutinesAndroidV" }
+hilt = { module="com.google.dagger:hilt-android",  version.ref = "hiltVersion" }
+hilt-compiler = { module="com.google.dagger:hilt-android-compiler",  version.ref = "hiltVersion" }
+hilt-nav = { module="androidx.hilt:hilt-navigation-compose",  version.ref = "hiltNavVersion" }
+voyager-hilt = { module="cafe.adriel.voyager:voyager-hilt",  version.ref = "voyagerVersion" }
+voyager-navigator = { module="cafe.adriel.voyager:voyager-navigator",  version.ref = "voyagerVersion" }
+voyager-navigator-tab = { module="cafe.adriel.voyager:voyager-tab-navigator",  version.ref = "voyagerVersion" }
+voyager-navigator-transitions = { module="cafe.adriel.voyager:voyager-transitions",  version.ref = "voyagerVersion" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }

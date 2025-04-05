@@ -43,12 +43,18 @@ android {
 }
 
 dependencies {
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    //voyager
+    implementation(libs.voyager.hilt)
+    implementation(libs.voyager.navigator)
+    implementation(libs.voyager.navigator.tab)
+    implementation(libs.voyager.navigator.transitions)
 
-//    implementation ("com.google.dagger:hilt-android:$hiltVersion")
-//    kapt ("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    //hilt
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation (libs.hilt.nav)
+
+    // retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.kotlinx.coroutines.android)

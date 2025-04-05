@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TmdbApp</string>
+    <string name="home_tab">Главная</string>
+    <string name="profile_tab">Профиль</string>
+    <string name="profile_login_title">Войдите в свой аккаунт</string>
+    <string name="profile_login_description">
+        Если вы хотите использовать функции редактирования и рейтинга TMBD, так же как и
+        получение персональных рекомендаций, вам нужно будет войти в свой аккаунт.
+        Если вы не имеете аккаунта, тогда нужно зарегистрироваться.
+        Регистрация аккаунта является бесплатным и простым действием.
+    </string>
+    <string name="profile_login_label">Логин</string>
+    <string name="profile_password_label">Пароль</string>
 </resources>
