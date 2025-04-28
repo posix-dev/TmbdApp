@@ -1,6 +1,6 @@
 package com.example.tmdbapp.di
 
-import com.example.tmdbapp.data.api.NowPlayingService
+import com.example.tmdbapp.home.data.api.NowPlayingService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import tech.thdev.network.flowcalladapterfactory.FlowCallAdapterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -42,6 +43,7 @@ object AppModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(FlowCallAdapterFactory())
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .build()
