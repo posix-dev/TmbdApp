@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">home</string>
+    <string name="home_tab">Главная</string>
+    <string name="home_popular_movies_subtitle">Популярное</string>
+    <string name="home_now_playing_movies_subtitle">Идут сейчас</string>
+    <string name="home_view_all">Посмотреть всё "\u00BB"</string>
+</resources>
