@@ -24,6 +24,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -65,97 +66,104 @@ class ProfileScreen : Screen {
                     contentDescription = null
                 )
             }
-            Column(modifier = Modifier.padding(16.dp)) {
+            if (state.isAuth) {
                 Text(
-                    modifier = Modifier.padding(bottom = 16.dp),
-                    text = stringResource(R.string.profile_login_title),
-                    color = CustomColors.Black,
-                    style = TextStyle(
-                        fontSize = TextUnit(24f, TextUnitType.Sp),
-                        fontWeight = FontWeight(600)
-                    )
+                    text = "isAuth -- ${state.isAuth}",
+                    color = Color.Black
                 )
-                TextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 4.dp)
-                        .border(
-                            2.dp,
-                            color = MaterialTheme.colorScheme.primary,
-                            RoundedCornerShape(8.dp)
-                        ),
-                    value = state.login,
-                    label = { Text(stringResource(R.string.profile_login_label)) },
-                    colors = TextFieldDefaults.colors(
-                        focusedContainerColor = CustomColors.White,
-                        unfocusedContainerColor = CustomColors.White,
-                        disabledContainerColor = CustomColors.White,
-                        focusedTextColor = CustomColors.Black,
-                        cursorColor = CustomColors.Black,
-                        focusedLabelColor = CustomColors.Black,
-                        unfocusedLabelColor = CustomColors.Black,
-                        focusedIndicatorColor = CustomColors.Transparent,
-                        unfocusedIndicatorColor = CustomColors.Transparent
-                    ),
-                    onValueChange = {
-                        viewModel.updateLogin(it)
-                    }
-                )
-                TextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp)
-                        .border(
-                            2.dp,
-                            color = MaterialTheme.colorScheme.primary,
-                            RoundedCornerShape(8.dp)
-                        ),
-                    value = state.password,
-                    label = { Text(stringResource(R.string.profile_password_label)) },
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                    colors = TextFieldDefaults.colors(
-                        focusedContainerColor = CustomColors.White,
-                        unfocusedContainerColor = CustomColors.White,
-                        disabledContainerColor = CustomColors.White,
-                        focusedTextColor = CustomColors.Black,
-                        cursorColor = CustomColors.Black,
-                        focusedLabelColor = CustomColors.Black,
-                        unfocusedLabelColor = CustomColors.Black,
-                        focusedIndicatorColor = CustomColors.Transparent,
-                        unfocusedIndicatorColor = CustomColors.Transparent
-                    ),
-                    onValueChange = {
-                        viewModel.updatePassword(it)
-                    }
-                )
-                Text(
-                    text = stringResource(R.string.profile_login_description),
-                    color = CustomColors.Black,
-                    style = TextStyle(
-                        fontSize = TextUnit(16f, TextUnitType.Sp),
-                        fontWeight = FontWeight(400)
-                    )
-                )
-                Spacer(modifier = Modifier.weight(weight = 1f))
-                Button(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(8.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                    ),
-                    onClick = {
-                        viewModel.onLoginClick()
-                    }) {
+            } else {
+                Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        modifier = Modifier.padding(vertical = 8.dp),
-                        color = CustomColors.White,
-                        text = stringResource(R.string.profile_login).uppercase(),
+                        modifier = Modifier.padding(bottom = 16.dp),
+                        text = stringResource(R.string.profile_login_title),
+                        color = CustomColors.Black,
                         style = TextStyle(
-                            fontSize = TextUnit(18f, TextUnitType.Sp),
-                            fontWeight = FontWeight(800)
+                            fontSize = TextUnit(24f, TextUnitType.Sp),
+                            fontWeight = FontWeight(600)
                         )
                     )
+                    TextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 4.dp)
+                            .border(
+                                2.dp,
+                                color = MaterialTheme.colorScheme.primary,
+                                RoundedCornerShape(8.dp)
+                            ),
+                        value = state.login,
+                        label = { Text(stringResource(R.string.profile_login_label)) },
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = CustomColors.White,
+                            unfocusedContainerColor = CustomColors.White,
+                            disabledContainerColor = CustomColors.White,
+                            focusedTextColor = CustomColors.Black,
+                            cursorColor = CustomColors.Black,
+                            focusedLabelColor = CustomColors.Black,
+                            unfocusedLabelColor = CustomColors.Black,
+                            focusedIndicatorColor = CustomColors.Transparent,
+                            unfocusedIndicatorColor = CustomColors.Transparent
+                        ),
+                        onValueChange = {
+                            viewModel.updateLogin(it)
+                        }
+                    )
+                    TextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp)
+                            .border(
+                                2.dp,
+                                color = MaterialTheme.colorScheme.primary,
+                                RoundedCornerShape(8.dp)
+                            ),
+                        value = state.password,
+                        label = { Text(stringResource(R.string.profile_password_label)) },
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = CustomColors.White,
+                            unfocusedContainerColor = CustomColors.White,
+                            disabledContainerColor = CustomColors.White,
+                            focusedTextColor = CustomColors.Black,
+                            cursorColor = CustomColors.Black,
+                            focusedLabelColor = CustomColors.Black,
+                            unfocusedLabelColor = CustomColors.Black,
+                            focusedIndicatorColor = CustomColors.Transparent,
+                            unfocusedIndicatorColor = CustomColors.Transparent
+                        ),
+                        onValueChange = {
+                            viewModel.updatePassword(it)
+                        }
+                    )
+                    Text(
+                        text = stringResource(R.string.profile_login_description),
+                        color = CustomColors.Black,
+                        style = TextStyle(
+                            fontSize = TextUnit(16f, TextUnitType.Sp),
+                            fontWeight = FontWeight(400)
+                        )
+                    )
+                    Spacer(modifier = Modifier.weight(weight = 1f))
+                    Button(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primary,
+                        ),
+                        onClick = {
+                            viewModel.onLoginClick()
+                        }) {
+                        Text(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            color = CustomColors.White,
+                            text = stringResource(R.string.profile_login).uppercase(),
+                            style = TextStyle(
+                                fontSize = TextUnit(18f, TextUnitType.Sp),
+                                fontWeight = FontWeight(800)
+                            )
+                        )
+                    }
                 }
             }
         }

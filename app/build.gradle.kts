@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -19,11 +21,27 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Read from local.properties
+        val localProperties = Properties().apply {
+            val localPropertiesFile = rootProject.file("local.properties")
+            if (localPropertiesFile.exists()) {
+                load(localPropertiesFile.inputStream())
+            }
+        }
+
+        // Set the BuildConfig field
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"${localProperties.getProperty("API_KEY", "")}\""
+        )
     }
 
     buildTypes {
         debug {
             isMinifyEnabled = false
+            buildConfigField("String", "API_URL","\"https://api.themoviedb.org/3/\"")
         }
         release {
             isMinifyEnabled = false
@@ -31,6 +49,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "API_URL","\"https://api.themoviedb.org/3/\"")
         }
     }
     compileOptions {
@@ -42,6 +61,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -52,6 +72,9 @@ dependencies {
     implementation(project(":core:common:ui"))
     implementation(project(":feature:home"))
     implementation(project(":feature:profile"))
+    implementation(project(":feature:detail_movie"))
+    implementation(project(":feature:detail_actor"))
+    implementation(project(":feature:all_movies"))
 
     //voyager
     implementation(libs.voyager.navigator.tab)

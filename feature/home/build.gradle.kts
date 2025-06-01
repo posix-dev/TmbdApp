@@ -25,6 +25,8 @@ android {
 dependencies {
     implementation(project(":core:common:model"))
     implementation(project(":core:common:network"))
+    implementation(project(":core:common:ui"))
+    implementation(project(":core:common:nav"))
 
     implementation(libs.voyager.hilt)
     implementation(libs.voyager.navigator)

@@ -15,7 +15,7 @@ import cafe.adriel.voyager.navigator.tab.TabNavigator
 import com.example.tmdbapp.common.nav.navigation.TabNavigationItem
 import com.example.tmdbapp.common.ui.TmdbAppTheme
 import com.example.tmdbapp.feature.profile.ProfileTab
-import com.example.tmdbapp.home.presentation.HomeTab
+import com.example.tmdbapp.home.presentation.MainTab
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainRoute() {
-    TabNavigator(HomeTab) {
+    TabNavigator(MainTab) {
         Scaffold(
             content = { innerPadding ->
                 Box(modifier = Modifier.padding(innerPadding)) {
@@ -43,7 +43,7 @@ fun MainRoute() {
             },
             bottomBar = {
                 NavigationBar {
-                    TabNavigationItem(HomeTab)
+                    TabNavigationItem(MainTab)
                     TabNavigationItem(ProfileTab)
                 }
             }

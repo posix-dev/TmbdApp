@@ -1,6 +1,10 @@
 package com.example.tmdbapp.di
 
-import com.example.tmdbapp.home.data.api.NowPlayingService
+import com.example.tmbdapp.detail_actor.data.api.PeopleService
+import com.example.tmdbapp.BuildConfig.API_KEY
+import com.example.tmdbapp.BuildConfig.API_URL
+import com.example.tmdbapp.feature.profile.data.api.AuthService
+import com.example.tmdbapp.network.api.MovieService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,9 +20,7 @@ import tech.thdev.network.flowcalladapterfactory.FlowCallAdapterFactory
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    private const val BASE_URL = "https://api.themoviedb.org/3/"
-    private const val API_KEY =
-        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YzAxNjE5OWY2N2JhODg0NTY5NWRjMTZkNWM3ZWZiMCIsIm5iZiI6MTU4Nzk3OTE3OC4zMjA5OTk5LCJzdWIiOiI1ZWE2YTNhYTljMjRmYzAwMWZkNWI1OGUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.AW_65BZt3NtWm8AVDJSWF4MfvjLkPeHqcUoHrubz-kw"
+    private const val AUTH = "Authorization"
 
     @Singleton
     @Provides
@@ -32,7 +34,7 @@ object AppModule {
             val request = chain.request()
             chain.proceed(
                 request.newBuilder().addHeader(
-                    "Authorization", "Bearer $API_KEY"
+                    AUTH, "Bearer $API_KEY"
                 )
                     .build()
             )
@@ -44,13 +46,27 @@ object AppModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(FlowCallAdapterFactory())
-        .baseUrl(BASE_URL)
+        .baseUrl(API_URL)
         .client(okHttpClient)
         .build()
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): NowPlayingService =
-        retrofit.create(NowPlayingService::class.java)
+    fun provideApiService(retrofit: Retrofit): MovieService =
+        retrofit.create(MovieService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideAuthenticateService(retrofit: Retrofit): AuthService =
+        retrofit.create(AuthService::class.java)
+
+    @Singleton
+    @Provides
+    fun providePeopleService(retrofit: Retrofit): PeopleService =
+        retrofit.create(PeopleService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideApiKey() = API_KEY
 
 }

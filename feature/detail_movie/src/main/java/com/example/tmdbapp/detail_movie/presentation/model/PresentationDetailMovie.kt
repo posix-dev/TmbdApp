@@ -1,0 +1,37 @@
+package com.example.tmdbapp.detail_movie.presentation.model
+
+import com.example.tmdbapp.detail_movie.domain.BelongsToCollection
+import com.example.tmdbapp.detail_movie.domain.Genres
+import com.example.tmdbapp.detail_movie.domain.ProductionCompanies
+import com.example.tmdbapp.detail_movie.domain.ProductionCountries
+import com.example.tmdbapp.detail_movie.domain.SpokenLanguages
+
+data class PresentationDetailMovie(
+    val adult: Boolean,
+    val backdropPath: String,
+    val belongsToCollection: BelongsToCollection?,
+    val budget: Int?,
+    val genres: List<Genres> = listOf(),
+    val homepage: String,
+    val id: Int?,
+    val imdbId: String?,
+    val originCountry: List<String> = listOf(),
+    val originalLanguage: String? = null,
+    val originalTitle: String? = null,
+    val overview: String? = null,
+    val popularity: Double? = null,
+    val posterPath: String? = null,
+    val productionCompanies: List<ProductionCompanies> = listOf(),
+    val productionCountries: List<ProductionCountries> = listOf(),
+    val titleYear: String? = null,
+    val releaseDate: String? = null,
+    val revenue: Int? = null,
+    val runtime: Int? = null,
+    val spokenLanguages: List<SpokenLanguages> = listOf(),
+    val status: String? = null,
+    val tagline: String? = null,
+    val title: String? = null,
+    val video: Boolean? = null,
+    val voteAverage: Double? = null,
+    val voteCount: Int? = null,
+)

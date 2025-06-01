@@ -19,6 +19,7 @@ hiltNavVersion = "1.2.0"
 voyagerVersion = "1.1.0-beta02"
 material = "1.12.0"
 coil = "3.1.0"
+jetbrainsKotlinJvm = "2.0.0"
 
 [libraries]
 kotlinx-coroutines-android = { module="org.jetbrains.kotlinx:kotlinx-coroutines-android",  version.ref = "kotlinCoroutinesAndroidV" }
@@ -62,4 +63,6 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+java-library = { id = "java-library" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 

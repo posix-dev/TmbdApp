@@ -37,6 +37,7 @@ dependencies {
     api(libs.retrofit)
     api(libs.retrofit.converter.gson)
     api(libs.retrofit.interceptor)
+    implementation(project(":core:common:model"))
 
     implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)

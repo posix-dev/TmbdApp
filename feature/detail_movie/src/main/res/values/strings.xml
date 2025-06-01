@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_movie_description">Что то там</string>
+    <string name="detail_movie_rating">Рейтинг</string>
+    <string name="detail_movie_trailer">Трейлер</string>
+    <string name="detail_movie_description_movie">Описание</string>
+    <string name="detail_movie_actor_cast">Актерский состав</string>
+</resources>
